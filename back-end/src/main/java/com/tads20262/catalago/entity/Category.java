@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 
 @Entity
-@Table
+@Table(name = "tb_category")\
 public class Category
 {
     @Id
