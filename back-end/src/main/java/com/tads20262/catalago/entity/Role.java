@@ -1,20 +1,21 @@
 package com.tads20262.catalago.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 
 @Entity
-@Table(name = "tb_category")
-public class Category
-{
+@Table
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String name;
+    private Long id;
+    private String authority;
 
 
 }

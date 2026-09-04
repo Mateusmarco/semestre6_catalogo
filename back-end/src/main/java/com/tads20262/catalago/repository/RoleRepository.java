@@ -1,11 +1,10 @@
 package com.tads20262.catalago.repository;
 
-import com.tads20262.catalago.entity.Category;
+import com.tads20262.catalago.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long>
-{
+public interface RoleRepository extends JpaRepository<Role, Long> {
 
 }
