@@ -1,7 +1,13 @@
 package com.tads20262.catalago.resource.exceptions;
 
-import java.time.Instant;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class StandardError {
     private Instant timestamp;
     private Integer status;
