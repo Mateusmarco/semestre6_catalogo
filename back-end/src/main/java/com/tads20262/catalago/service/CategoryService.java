@@ -3,6 +3,7 @@ package com.tads20262.catalago.service;
 import com.tads20262.catalago.dto.CategoryDTO;
 import com.tads20262.catalago.entity.Category;
 import com.tads20262.catalago.repository.CategoryRepository;
+import com.tads20262.catalago.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +34,7 @@ public class CategoryService {
     public CategoryDTO findById(Long id){
         Optional<Category> obj = repository.findById(id);
 
-        Category entity = obj.get();
+        Category entity = obj.orElseThrow(()-> new ResourceNotFoundException("Entity Not found"));
 
         return new CategoryDTO(entity);
     }
