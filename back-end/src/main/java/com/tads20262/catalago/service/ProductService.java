@@ -1,8 +1,10 @@
 package com.tads20262.catalago.service;
 
 import com.tads20262.catalago.dto.ProductDTO;
+import com.tads20262.catalago.entity.Category;
 import com.tads20262.catalago.entity.Product;
 import com.tads20262.catalago.repository.ProductRepository;
+import com.tads20262.catalago.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +34,7 @@ public class ProductService {
     public ProductDTO findById(Long id){
         Optional<Product> obj = repository.findById(id);
 
-        Product entity = obj.get();
+        Product entity = obj.orElseThrow(()-> new ResourceNotFoundException("Entity Not found"));
 
         return new ProductDTO(entity);
     }

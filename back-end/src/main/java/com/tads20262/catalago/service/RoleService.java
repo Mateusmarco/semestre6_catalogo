@@ -1,8 +1,10 @@
 package com.tads20262.catalago.service;
 
 import com.tads20262.catalago.dto.RoleDTO;
+import com.tads20262.catalago.entity.Product;
 import com.tads20262.catalago.entity.Role;
 import com.tads20262.catalago.repository.RoleRepository;
+import com.tads20262.catalago.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +38,9 @@ public class RoleService {
     public RoleDTO findById(Long id) {
         Optional<Role> obj = repository.findById(id);
 
-        Role entity = obj.get();
+        Role entity = obj.orElseThrow(()-> new ResourceNotFoundException("Entity Not found"));
 
         return new RoleDTO(entity);
     }
+
 }
