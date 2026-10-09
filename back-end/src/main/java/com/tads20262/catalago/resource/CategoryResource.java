@@ -1,10 +1,12 @@
 package com.tads20262.catalago.resource;
 
 import com.tads20262.catalago.dto.CategoryDTO;
+import com.tads20262.catalago.dto.ProductDTO;
 import com.tads20262.catalago.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,15 +23,10 @@ public class CategoryResource {
 
 
     @GetMapping
-    public ResponseEntity<Page<CategoryDTO>> findAll(
-            @RequestParam(value = "page", defaultValue = "0") Integer page,
-            @RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
-            @RequestParam(value = "direction", defaultValue = "ASC") String direction,
-            @RequestParam(value = "orderBy", defaultValue = "name") String orderBy
-    )
+    public ResponseEntity<Page<CategoryDTO>> findAll(Pageable pagable)
     {
-        PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction),orderBy);
-        Page<CategoryDTO> list = service.findAllPaged(pageRequest);
+
+        Page<CategoryDTO> list = service.findAllPaged(pagable);
 
         return ResponseEntity.ok(list);
 

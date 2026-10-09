@@ -25,6 +25,7 @@ public class Product {
     private Double price;
     private String imgUrl;
 
+
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant date;
 
