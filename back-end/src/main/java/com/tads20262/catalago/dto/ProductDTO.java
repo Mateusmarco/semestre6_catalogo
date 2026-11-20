@@ -34,6 +34,6 @@ public class ProductDTO {
     }
     public ProductDTO(Product entity, Set<Category> categories) {
         this(entity);
-        categories.forEach(cat -> this.categories.add(new CategoryDTO(cat)));
+        categories.forEach(categoria -> this.categories.add(new CategoryDTO(categoria)));
     }
 }
